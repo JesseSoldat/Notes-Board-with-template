@@ -86,20 +86,25 @@ exports['default'] = _react2['default'].createClass({
 	getInitialState: function getInitialState() {
 		return { editing: false };
 	},
+	componentWillMount: function componentWillMount() {
+		this.style = {};
+	},
 	componentDidMount: function componentDidMount() {
 		$(_reactDom2['default'].findDOMNode(this)).draggable();
 
 		// $( "#note" ).draggable();
 	},
 	edit: function edit() {
-		console.log('edit');
-		// $( "#note" ).draggable();
+		this.setState({ editing: true });
 	},
 	'delete': function _delete() {
 		console.log('delete');
 		$("#test").html('test');
 	},
-	render: function render() {
+	save: function save() {
+		this.setState({ editing: false });
+	},
+	renderDisplay: function renderDisplay() {
 		return _react2['default'].createElement(
 			'div',
 			{ id: 'note' },
@@ -127,6 +132,33 @@ exports['default'] = _react2['default'].createClass({
 				)
 			)
 		);
+	},
+
+	renderForm: function renderForm() {
+		return _react2['default'].createElement(
+			'div',
+			{ id: 'note' },
+			_react2['default'].createElement('textarea', { className: 'form-control',
+				defaultValue: this.props.children }),
+			_react2['default'].createElement(
+				'span',
+				{ id: 'noteBtnWrapper' },
+				_react2['default'].createElement(
+					'button',
+					{ className: 'noteBtn button success tiny radius',
+						onClick: this.save },
+					_react2['default'].createElement('i', { className: 'fa fa-save' })
+				)
+			)
+		);
+	},
+
+	render: function render() {
+		if (this.state.editing) {
+			return this.renderForm();
+		} else {
+			return this.renderDisplay();
+		}
 	}
 });
 module.exports = exports['default'];

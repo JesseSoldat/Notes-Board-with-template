@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-
-
 export default React.createClass({
 	getInitialState(){
 		return (
 			{editing: false}
 			);
+	},
+	componentWillMount: function(){
+		this.style = {
+
+		}
 	},
 	componentDidMount: function(){
 		$(ReactDOM.findDOMNode(this)).draggable();
@@ -18,8 +21,8 @@ export default React.createClass({
 
 	},
 	edit(){ 
-		console.log('edit');
-		// $( "#note" ).draggable();
+		this.setState( {editing: true});
+
 
 	},
 	delete(){
@@ -27,7 +30,10 @@ export default React.createClass({
 		$( "#test" ).html('test');
 
 	},
-	render(){
+	save(){
+		this.setState( {editing: false});
+	},
+	renderDisplay(){
 		return (
 			<div id="note">
 				<p>{this.props.children}</p>
@@ -48,5 +54,29 @@ export default React.createClass({
 			</div>
 			);
 		
+	},
+
+	renderForm(){
+		return (
+			<div id="note">
+				<textarea className="form-control"
+				defaultValue={this.props.children}/>
+				<span id="noteBtnWrapper">
+					<button className="noteBtn button success tiny radius"
+					onClick={this.save}>
+						<i className="fa fa-save"></i>
+					</button>
+				</span>
+			</div>
+
+				);
+	},
+
+	render(){
+		if(this.state.editing) {
+			return this.renderForm();
+		}	else {
+			return this.renderDisplay();
+		}
 	}
 });

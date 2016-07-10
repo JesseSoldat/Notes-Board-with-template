@@ -8604,6 +8604,12 @@ div#note {
   cursor: pointer; }
   div#note p {
     padding: 10px; }
+  div#note textarea {
+    height: 100px;
+    width: 95%;
+    display: block;
+    margin: 10px auto;
+    background-color: white; }
   div#note #noteBtnWrapper {
     position: absolute;
     bottom: 3px;

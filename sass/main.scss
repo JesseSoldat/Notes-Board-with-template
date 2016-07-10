@@ -34,6 +34,13 @@ div#note {
 	p {
 		padding: 10px;
 	}
+	textarea {
+			height: 100px;
+			width: 95%;
+			display: block;
+			margin: 10px auto;
+			background-color:  rgba(255,255,255,1);
+			}
 
 	#noteBtnWrapper {
 	position: absolute;
@@ -51,6 +58,8 @@ div#note {
 				text-align: center;
 				margin: 0 auto;
 			}
+
+			
 		}
 	}
 }
