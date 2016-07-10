@@ -1,4 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+
 
 export default React.createClass({
 	getInitialState(){
@@ -6,11 +10,22 @@ export default React.createClass({
 			{editing: false}
 			);
 	},
-	edit(){
+	componentDidMount: function(){
+		$(ReactDOM.findDOMNode(this)).draggable();
+
+		// $( "#note" ).draggable();
+		
+
+	},
+	edit(){ 
 		console.log('edit');
+		// $( "#note" ).draggable();
+
 	},
 	delete(){
 		console.log('delete');
+		$( "#test" ).html('test');
+
 	},
 	render(){
 		return (

@@ -23,7 +23,7 @@ export default React.createClass({
 				customBtn
 				button success radius small"
 				id="addNote"
-				onClick={this.addNote()}>Add
+				onClick={this.addNote}>Add
 				</button>
 			</div>
 			)

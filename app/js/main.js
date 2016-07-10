@@ -35,7 +35,7 @@ exports['default'] = _react2['default'].createClass({
 				'button',
 				{ className: '\r customBtn\r button success radius small',
 					id: 'addNote',
-					onClick: this.addNote() },
+					onClick: this.addNote },
 				'Add'
 			)
 		);
@@ -76,17 +76,28 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 exports['default'] = _react2['default'].createClass({
 	displayName: 'note',
 
 	getInitialState: function getInitialState() {
 		return { editing: false };
 	},
+	componentDidMount: function componentDidMount() {
+		$(_reactDom2['default'].findDOMNode(this)).draggable();
+
+		// $( "#note" ).draggable();
+	},
 	edit: function edit() {
 		console.log('edit');
+		// $( "#note" ).draggable();
 	},
 	'delete': function _delete() {
 		console.log('delete');
+		$("#test").html('test');
 	},
 	render: function render() {
 		return _react2['default'].createElement(
@@ -120,7 +131,7 @@ exports['default'] = _react2['default'].createClass({
 });
 module.exports = exports['default'];
 
-},{"react":178}],4:[function(require,module,exports){
+},{"react":178,"react-dom":9}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }

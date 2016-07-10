@@ -8602,6 +8602,8 @@ div#note {
   background-color: yellow;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
   cursor: pointer; }
+  div#note p {
+    padding: 10px; }
   div#note #noteBtnWrapper {
     position: absolute;
     bottom: 3px;
