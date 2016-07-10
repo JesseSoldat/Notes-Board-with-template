@@ -29,7 +29,8 @@ export default Backbone.Router.extend({
 
 	showNotes(){
 		console.log('showNotes');
-		this.render(<NotesComponent />)
+		this.render(<NotesComponent>Note</NotesComponent>
+			);
 	}
 
 });

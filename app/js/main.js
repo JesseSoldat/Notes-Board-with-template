@@ -14,34 +14,51 @@ var _note2 = _interopRequireDefault(_note);
 exports.NotesComponent = _note2['default'];
 
 },{"./note":2}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
-Object.defineProperty(exports, '__esModule', {
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-exports['default'] = _react2['default'].createClass({
-	displayName: 'note',
+exports["default"] = _react2["default"].createClass({
+	displayName: "note",
 
+	getInitialState: function getInitialState() {
+		return { editing: false };
+	},
 	render: function render() {
-		return _react2['default'].createElement(
-			'div',
-			null,
-			_react2['default'].createElement(
-				'h3',
+		return _react2["default"].createElement(
+			"div",
+			{ id: "note" },
+			_react2["default"].createElement(
+				"p",
 				null,
-				'Notes'
+				this.props.children
+			),
+			_react2["default"].createElement(
+				"span",
+				{ id: "noteBtnWrapper" },
+				_react2["default"].createElement(
+					"button",
+					{ className: "noteBtn button tiny radius" },
+					_react2["default"].createElement("i", { className: "btnIcon fa fa-pencil" })
+				),
+				_react2["default"].createElement(
+					"button",
+					{ className: "noteBtn button tiny radius" },
+					_react2["default"].createElement("i", { className: "btnIcon fa fa-trash" })
+				)
 			)
 		);
 	}
 });
-module.exports = exports['default'];
+module.exports = exports["default"];
 
 },{"react":177}],3:[function(require,module,exports){
 'use strict';
@@ -108,7 +125,11 @@ exports['default'] = _backbone2['default'].Router.extend({
 
 	showNotes: function showNotes() {
 		console.log('showNotes');
-		this.render(_react2['default'].createElement(_components.NotesComponent, null));
+		this.render(_react2['default'].createElement(
+			_components.NotesComponent,
+			null,
+			'Note'
+		));
 	}
 
 });

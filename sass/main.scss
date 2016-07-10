@@ -1,6 +1,34 @@
-// Put any @imports here
-// See Readme for a list of supported ones
+@import 'font-awesome';
+@import 'foundation';
 
 body {
   background: #e2ebf3;
 }
+
+
+div#note {
+	width: 150px;
+	height: 150px;
+	margin: 5px;
+	position: absolute;
+	background-color: yellow;
+	box-shadow: 5px 5px 15px rgba(0,0,0,.5);
+	cursor: pointer;
+
+	#noteBtnWrapper {
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+
+		.noteBtn {
+		margin: 3px;
+		
+			.btnIcon {
+				display: block;
+				text-align: center;
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
