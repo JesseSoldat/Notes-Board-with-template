@@ -6,16 +6,26 @@ export default React.createClass({
 			{editing: false}
 			);
 	},
+	edit(){
+		console.log('edit');
+	},
+	delete(){
+		console.log('delete');
+	},
 	render(){
 		return (
 			<div id="note">
 				<p>{this.props.children}</p>
 				<span id="noteBtnWrapper">
-					<button className="noteBtn button tiny radius">
+					<button 
+					onClick={this.edit}
+					className="noteBtn button tiny radius">
 						<i className="btnIcon fa fa-pencil">
 						</i>
 					</button>
-					<button className="noteBtn button tiny radius">
+					<button 
+					onClick={this.delete}
+					className="noteBtn button  alert tiny radius">
 						<i className="btnIcon fa fa-trash">
 						</i>
 					</button>

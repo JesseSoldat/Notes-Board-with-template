@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 
 import {
 	NotesComponent,
+	BoardComponent,
 
 } from './components';
 
@@ -28,8 +29,8 @@ export default Backbone.Router.extend({
 	},
 
 	showNotes(){
-		console.log('showNotes');
-		this.render(<NotesComponent>Note</NotesComponent>
+		this.render(
+			<BoardComponent></BoardComponent>
 			);
 	}
 

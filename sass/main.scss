@@ -1,8 +1,29 @@
 @import 'font-awesome';
 @import 'foundation';
 
+
+
+
 body {
   background: #e2ebf3;
+}
+
+#board {
+	background-color: brown;
+	width: 100%;
+	height: 100vh;
+	position: relative;
+
+	#addNote {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	.customBtn {
+		@include button-size($padding: rem-calc(7));
+		
+
+	}
 }
 
 
@@ -22,6 +43,9 @@ div#note {
 
 		.noteBtn {
 		margin: 3px;
+
+		@include button-size($padding: rem-calc(7))
+	
 		
 			.btnIcon {
 				display: block;
