@@ -19,23 +19,51 @@ exports['default'] = _react2['default'].createClass({
 	getInitialState: function getInitialState() {
 		return { notes: [] };
 	},
-	addNote: function addNote() {
-		console.log('addNote');
+	nextId: function nextId() {
+		this.newId = this.newId || 0;
+		return this.newId++;
 	},
+	addNote: function addNote(text) {
+		console.log(text);
+		var arr = this.state.notes;
+		arr.push({
+			id: this.nextId(),
+			note: text
+		});
+		this.setState({ notes: arr });
+	},
+
+	remove: function remove(i) {
+		var arr = this.state.notes;
+		arr.splice(i, 1);
+		this.setState({ notes: arr });
+	},
+	update: function update(newText, i) {
+		var arr = this.state.notes;
+		arr[i].note = newText;
+		this.setState({ notes: arr });
+	},
+	eachNote: function eachNote(note, i) {
+		return _react2['default'].createElement(
+			_.NotesComponent,
+			{ key: note.id,
+				index: i,
+				update: this.update,
+				remove: this.remove },
+			note.note
+		);
+	},
+
 	render: function render() {
 		return _react2['default'].createElement(
 			'div',
 			{ id: 'board' },
-			_react2['default'].createElement(
-				_.NotesComponent,
-				null,
-				'Note'
-			),
+			this.state.notes.map(this.eachNote),
 			_react2['default'].createElement(
 				'button',
 				{ className: '\r customBtn\r button success radius small',
 					id: 'addNote',
-					onClick: this.addNote },
+					onClick: this.addNote.bind(null, 'New Note') },
 				'Add'
 			)
 		);
