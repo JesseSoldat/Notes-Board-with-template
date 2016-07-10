@@ -114,8 +114,15 @@ exports['default'] = _react2['default'].createClass({
 	getInitialState: function getInitialState() {
 		return { editing: false };
 	},
+	randomBetween: function randomBetween(min, max) {
+		return min + Math.ceil(Math.random() * max);
+	},
 	componentWillMount: function componentWillMount() {
-		this.style = {};
+		this.style = {
+			right: this.randomBetween(0, window.innerWidth - 150) + 'px',
+			top: this.randomBetween(0, window.innerHeight - 150) + 'px',
+			transform: 'rotate(' + this.randomBetween(-15, 15) + 'deg'
+		};
 	},
 	componentDidMount: function componentDidMount() {
 		$(_reactDom2['default'].findDOMNode(this)).draggable();
@@ -126,16 +133,18 @@ exports['default'] = _react2['default'].createClass({
 		this.setState({ editing: true });
 	},
 	'delete': function _delete() {
-		console.log('delete');
-		$("#test").html('test');
+		this.props.remove();
 	},
 	save: function save() {
+		var newText = _reactDom2['default'].findDOMNode(this.refs.newText);
+		this.props.update(newText.value, this.props.index);
+
 		this.setState({ editing: false });
 	},
 	renderDisplay: function renderDisplay() {
 		return _react2['default'].createElement(
 			'div',
-			{ id: 'note' },
+			{ id: 'note', style: this.style },
 			_react2['default'].createElement(
 				'p',
 				null,
@@ -165,9 +174,9 @@ exports['default'] = _react2['default'].createClass({
 	renderForm: function renderForm() {
 		return _react2['default'].createElement(
 			'div',
-			{ id: 'note' },
+			{ id: 'note', style: this.style },
 			_react2['default'].createElement('textarea', { className: 'form-control',
-				defaultValue: this.props.children }),
+				defaultValue: this.props.children, ref: 'newText' }),
 			_react2['default'].createElement(
 				'span',
 				{ id: 'noteBtnWrapper' },
